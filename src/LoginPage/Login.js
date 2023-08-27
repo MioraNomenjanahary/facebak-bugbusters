@@ -32,21 +32,21 @@ function Login() {
             <div className='input'>
               <input placeholder='Email or Phone Number'/>
               <input placeholder='Password'/>
-            </div>
             <button className='login_button'>
               Log in
             </button>
-            <Link>Forget password?</Link>
+            <Link className='auth'>Forget password?</Link>
 
             <hr/>
 
-            <Link className='sign' to='/Signup'>  
-              <button>
+            <Link to='/Signup'>  
+              <button  className='sign'>
                 Create new account
               </button>
             </Link>
           </div>
-            <p>Create a Page for a celebrity, brand or business.</p>
+        </div>
+          <p> <span>Create a Page</span>, for a celebrity, brand or business.</p>
         </div>
 
 
