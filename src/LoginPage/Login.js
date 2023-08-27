@@ -1,31 +1,80 @@
-import React from 'react';
+import React, {useState} from 'react';
 import './Login.css';
-import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
 
 function Login() {
+  const [showLoginWindow, setShowLoginWindow] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleButtonIconClick = () => {
+    setShowLoginWindow(true);
+  }
+
+  const handleCheckboxChange = () => {
+    setIsChecked(!isChecked);
+  }
+
+  const handleCloseWindow = () => {
+    setShowLoginWindow(false);
+  }
+  
   return (
     <div className="login_body">
       <header className="login_header">
         <img
-          className="facebookLogo"
           src="https://static.xx.fbcdn.net/rsrc.php/y8/r/dF5SId3UHWd.svg"
           alt="Facebook"
         />
         <div>
-          <p>Recent Logins</p>
+          <h2>Recent Logins</h2>
+          <p>Click your picture or add an account.</p>
         </div>
 
         <div className='card'>
-                <button className='buttonIcon'>
-                    <FontAwesomeIcon icon={faPlusCircle} className="circle-icon" />
-                </button>
-                <div className='foot'></div>
+            <button className='buttonIcon' onClick={handleButtonIconClick}>
+              <FontAwesomeIcon icon={faPlusCircle} className="circle-icon" />
+            </button>
+
+            <div className='foot'>
+              <p>
+                Add Account
+              </p>
+            </div>
+              {
+                showLoginWindow && (
+                  <div className='loginWindow'>
+                    {
+                      <div className='window'>
+                        <div className='windowHeader'>
+                          <h1>Log Into Facebook</h1>
+                              <FontAwesomeIcon icon={faTimesCircle} onClick={handleCloseWindow}/>
+                        </div>
+                        <hr/>
+                        <div className='windowInput'>
+                          <input placeholder='Email or phone number'/>
+                          <input placeholder='Password'/>
+                        </div>
+                        <div className='remembering'>
+                          <label>
+                            <input type='checkBox'
+                                  checked={isChecked}
+                                  onChange={handleCheckboxChange}
+                            /> Remember Password
+                          </label>
+                        </div>
+                        <button className='login_button'>
+                          Log in
+                        </button>
+                        <Link className='auth'>Forget password?</Link>                        
+                      </div>
+                    }
+                  </div>)
+                  }
         </div>
       </header>
-      
 
         <div className='login_section'>  
           <div className='identifiants'>        
@@ -48,8 +97,6 @@ function Login() {
         </div>
           <p> <span>Create a Page</span>, for a celebrity, brand or business.</p>
         </div>
-
-
     </div>
   );
 }
