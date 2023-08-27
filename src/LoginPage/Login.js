@@ -50,22 +50,23 @@ function Login() {
                       <div className='window'>
                         <div className='windowHeader'>
                           <h1>Log Into Facebook</h1>
-                              <FontAwesomeIcon icon={faTimesCircle} onClick={handleCloseWindow}/>
+                          <FontAwesomeIcon icon={faTimesCircle} onClick={handleCloseWindow} className='timesCircle'/>
                         </div>
-                        <hr/>
+                        <hr className='windowHr'/>
                         <div className='windowInput'>
                           <input placeholder='Email or phone number'/>
                           <input placeholder='Password'/>
                         </div>
-                        <div className='remembering'>
+                        <div className='checkBox'>
                           <label>
-                            <input type='checkBox'
+                            <input type='checkbox'
                                   checked={isChecked}
                                   onChange={handleCheckboxChange}
+                                  className='case'
                             /> Remember Password
                           </label>
                         </div>
-                        <button className='login_button'>
+                        <button className='window_loginButton'>
                           Log in
                         </button>
                         <Link className='auth'>Forget password?</Link>                        

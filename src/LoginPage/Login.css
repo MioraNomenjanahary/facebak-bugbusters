@@ -25,7 +25,7 @@
     gap: 2rem;
 }
 
-  img {
+img {
     height: 60px;
     width: 170px;
 
@@ -55,8 +55,8 @@ p{
     background-color: #f5f6f7;
 
     position: relative;
-
 }
+
 .foot{
     display: flex;
     justify-content: center;
@@ -71,9 +71,8 @@ p{
     border-bottom-left-radius: 0.5rem;
     border-bottom-right-radius: 0.5rem;
 
-    position: fixed;
+    position: absolute;
     bottom: 0;
-
 }
 
 .buttonIcon{
@@ -122,13 +121,15 @@ input{
 
 }
 
+input:focus{
+    outline: 1px solid #1877f2;
+}
+
 .identifiants{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
-    gap: 0.5rem;
     
     border: 0.5px solid rgba(106, 102, 102, 0.2);
     border-radius: 1rem;
@@ -136,6 +137,7 @@ input{
     box-shadow: 0px 0px 15px 1px rgba(106, 102, 102, 0.2);
 
     padding-block: 1rem;
+    gap: 1rem;
 
     height: auto;
     width: 25rem;
@@ -149,6 +151,7 @@ input{
     border-radius: 0.3rem;
 
     height: 2.7rem;
+    width: auto;
 
     font-size: 16px;
     font-weight: 600;
@@ -205,16 +208,18 @@ span{
 }
 
 .loginWindow {
-    /* ... Autres styles ... */
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); /* Couleur foncée semi-transparente */
     display: flex;
     justify-content: center;
     align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    background-color: rgba(0, 0, 0, 0.5);
   }
 
 
@@ -224,9 +229,82 @@ span{
     justify-content: center;
     align-items: center;
 
+    height: auto;
+    width: 25rem;
+
+    padding-block: 1rem;
+
     gap: 1rem;
 
     background-color: #fff;
 
     border-radius: 0.5rem;
+}
+
+.windowHeader{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 5rem;
+}
+
+.timesCircle{
+    font-size: 35px;
+    color: rgba(106, 102, 102, 0.2);
+}
+
+h1{
+    margin: 0;
+    padding: 0;
+
+    font-family: inherit;
+    font-weight: lighter;
+    font-size: 20px;
+}
+
+.windowHr {
+    width: 100%;
+}
+
+.windowInput{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label{
+    display: inline-flex;
+    justify-content:left;
+    align-items: center;
+    text-align: left;
+
+    gap: 1rem;
+    margin-right: 155px;
+
+    color: rgb(157, 154, 154);
+}
+
+
+.case{
+    width: 15px;
+}
+
+.window_loginButton{
+    background-color: #1877f2;
+
+    border: #1877f2;
+    border-radius: 0.3rem;
+
+    height: 2.7rem;
+    width: 21rem;
+
+    font-size: 16px;
+    font-weight: 600;
+    color: #fff;
+}
+
+.window_loginButton:hover{
+    scale: 1.03;
+    transition-duration: 0.3s;
 }
