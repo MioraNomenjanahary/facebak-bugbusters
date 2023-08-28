@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import './Login.css';
-import { faPlusCircle, faTimesCircle } from '@fortawesome/free-solid-svg-icons';
+import { faPlusCircle, faTimesCircle, faTimes, faQuestionCircle} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
 
@@ -8,9 +8,14 @@ import { Link } from 'react-router-dom';
 function Login() {
   const [showLoginWindow, setShowLoginWindow] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+  const [showSignupWindow, setShowSignupWindow] = useState(false);
 
   const handleButtonIconClick = () => {
     setShowLoginWindow(true);
+  }
+
+  const handleButtonClick = () => {
+    setShowSignupWindow(true);
   }
 
   const handleCheckboxChange = () => {
@@ -20,6 +25,44 @@ function Login() {
   const handleCloseWindow = () => {
     setShowLoginWindow(false);
   }
+
+  const closeWindow = () => {
+    setShowSignupWindow(false);
+  }
+
+  const [selectedDay, setSelectedDay] = useState('');
+  const [selectedMonth, setSelectedMonth] = useState('');
+  const [selectedYear, setSelectedYear] = useState('');
+
+  const days = Array.from({ length: 31 }, (_, index) => index + 1);
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+  const years = Array.from({ length: 10 }, (_, index) => new Date().getFullYear() - index);
+
+  const handleDayChange = (event) => {
+    setSelectedDay(event.target.value);
+  };
+
+  const handleMonthChange = (event) => {
+    setSelectedMonth(event.target.value);
+  };
+
+  const handleYearChange = (event) => {
+    setSelectedYear(event.target.value);
+  };
+
+  const [selectedGender, setSelectedGender] = useState([]);
+
+  const handleGenderChange = (event) => {
+    const value = event.target.value;
+    if (selectedGender.includes(value)) {
+      setSelectedGender(selectedGender.filter((gender) => gender !== value));
+    } else {
+      setSelectedGender([...selectedGender, value]);
+    }
+  };
   
   return (
     <div className="login_body">
@@ -82,7 +125,7 @@ function Login() {
             <div className='input'>
               <input placeholder='Email or Phone Number'/>
               <input placeholder='Password'/>
-            </div>
+              </div>
             <button className='login_button'>
               Log in
             </button>
@@ -90,12 +133,108 @@ function Login() {
 
             <hr/>
 
-            <Link to='/Signup'>  
-              <button  className='sign'>
+            <button  className='sign' onClick={handleButtonClick}>
                 Create new account
-              </button>
-            </Link>
-        </div>
+            </button>
+            {
+              showSignupWindow && (
+                <div className='signupWindow'>
+                  {
+                    <div className='window1'>
+                      <div className='signupHeader'>
+                        <div className='signupText'>
+                          <h1>Sign Up</h1>
+                          <p>It's quick and easy.</p>
+                        </div>
+                        <FontAwesomeIcon icon={faTimes} onClick={closeWindow} className='timesIcon'/>
+                      </div>
+
+                      <hr className='signupHr'></hr>
+
+                      <div className='windowInput'>
+                        <div className='nameInput'>
+                          <input placeholder='First name'/>
+                          <input placeholder='Last name'/>
+                        </div>
+                        <input placeholder='Mobile number ou email'/>
+                        <input placeholder='New password'/>
+                      </div>
+                      
+                      <div className='birthdayLabel'>
+                        <label>
+                          Birthday <FontAwesomeIcon icon={faQuestionCircle}/>                          
+                        </label>
+                        <div className='date_dropDown'>                                           
+                          <select value={selectedMonth} onChange={handleMonthChange}>
+                            <option value="">Month</option>
+                            {months.map((month, index) => (
+                              <option key={month} value={index + 1}>{month}</option>
+                            ))}
+                          </select>
+
+                          <select value={selectedDay} onChange={handleDayChange}>
+                            <option value="">Day</option>
+                            {days.map(day => (
+                            <option key={day} value={day}>{day}</option>
+                            ))}
+                          </select>
+                          
+                          <select value={selectedYear} onChange={handleYearChange}>
+                            <option value="">Year</option>
+                            {years.map(year => (
+                              <option key={year} value={year}>{year}</option>
+                            ))}
+                          </select>
+
+                          {selectedDay && selectedMonth && selectedYear && (
+                            <p>Selected date: {selectedMonth}/{selectedDay}/{selectedYear}</p>
+                          )}
+                        </div>
+                      </div>
+                      
+                      <div className='genderLabel'>
+                        <label >Gender <FontAwesomeIcon icon={faQuestionCircle}/>
+                            <input className='caseBox'
+                              type="checkbox"
+                              value="male"
+                              checked={selectedGender.includes('male')}
+                              onChange={handleGenderChange}
+                            />
+                            Male 
+
+                            <input className='caseBox'
+                              type="checkbox"
+                              value="female"
+                              checked={selectedGender.includes('female')}
+                              onChange={handleGenderChange}
+                            />
+                            Female
+                                                    
+                            <input className='caseBox'
+                              type="checkbox"
+                              value="other"
+                              checked={selectedGender.includes('other')}
+                              onChange={handleGenderChange}
+                            />
+                            Other                      
+                        </label>
+                      </div>
+
+                      <div className='info'>
+                        <p>
+                        People who use our service may have uploaded your contact information to Facebook. <a href="#">Learn more.</a>                          
+                        </p>
+                        <p>
+                        By clicking Sign Up, you agree to our <a>Terms, Privacy Policy</a> and <a>Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.
+                        </p>
+                      </div>
+                    </div>
+                  }
+                </div>
+
+              )
+            }
+          </div>
           <p> <span>Create a Page</span>, for a celebrity, brand or business.</p>
         </div>
     </div>

@@ -212,7 +212,9 @@ span{
     font-weight: 600;
 }
 
-.loginWindow {
+.loginWindow, 
+.signupWindow
+    {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -228,7 +230,9 @@ span{
   }
 
 
-.window{
+.window,
+.window1
+    {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -246,7 +250,9 @@ span{
     border-radius: 0.5rem;
 }
 
-.windowHeader{
+.windowHeader,
+.signupHeader    
+{
     display: inline-flex;
     justify-content: center;
     align-items: center;
@@ -268,14 +274,37 @@ h1{
     font-size: 20px;
 }
 
-.windowHr {
+.windowHr,
+.signupHr
+    {
     width: 100%;
 }
 
 .windowInput{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
     gap: 0.5rem;
+}
+
+.nameInput{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 1rem;
+
+    width: 5px;
+    padding: 0;
+    margin: 0;
+}
+.birthdayLabel,
+.genderLabel
+{
+    display: flex;
+    flex-direction: column;
 }
 
 label{
@@ -293,6 +322,10 @@ label{
 
 .case{
     width: 15px;
+}
+
+.caseBox{
+    width: 13px;
 }
 
 .window_loginButton{
@@ -313,4 +346,3 @@ label{
     scale: 1.03;
     transition-duration: 0.3s;
 }
-
