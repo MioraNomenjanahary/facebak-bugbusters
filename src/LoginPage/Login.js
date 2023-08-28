@@ -6,6 +6,9 @@ import { Link } from 'react-router-dom';
 
 
 function Login() {
+  const [emailOrPhone, setEmailOrPhone] = useState('');
+  const [password, setPassword] = useState('');
+
   const [showLoginWindow, setShowLoginWindow] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const [showSignupWindow, setShowSignupWindow] = useState(false);
@@ -92,8 +95,12 @@ function Login() {
                         </div>
                         <hr className='windowHr'/>
                         <div className='windowInput'>
-                          <input placeholder='Email or phone number'/>
-                          <input placeholder='Password'/>
+                          <input placeholder='Email or phone number' 
+                                  value={emailOrPhone}
+                                  onChange={(e) => setEmailOrPhone(e.target.value)}/>
+                          <input placeholder='Password'
+                                  value={password}
+                                  onChange={(e) => setPassword(e.target.value)}/>
                         </div>
                         <div className='checkBox'>
                           <label>
@@ -118,8 +125,12 @@ function Login() {
         <div className='login_section'>  
           <div className='identifiants'>        
             <div className='input'>
-              <input placeholder='Email or Phone Number'/>
-              <input placeholder='Password'/>
+              <input placeholder='Email or Phone Number'
+                    value={emailOrPhone}
+                    onChange={(e) => setEmailOrPhone(e.target.value)}/>
+              <input placeholder='Password'
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}/>
               </div>
             <button className='login_button'>
               Log in
