@@ -53,17 +53,12 @@ function Login() {
     setSelectedYear(event.target.value);
   };
 
-  const [selectedGender, setSelectedGender] = useState([]);
+  const [gender, setGender] = useState('');
 
   const handleGenderChange = (event) => {
-    const value = event.target.value;
-    if (selectedGender.includes(value)) {
-      setSelectedGender(selectedGender.filter((gender) => gender !== value));
-    } else {
-      setSelectedGender([...selectedGender, value]);
-    }
-  };
-  
+    setGender(event.target.value);
+  }
+
   return (
     <div className="login_body">
       <header className="login_header">
@@ -133,7 +128,7 @@ function Login() {
 
             <hr/>
 
-            <button  className='sign' onClick={handleButtonClick}>
+            <button  className='signupButton' onClick={handleButtonClick}>
                 Create new account
             </button>
             {
@@ -153,11 +148,11 @@ function Login() {
 
                       <div className='windowInput'>
                         <div className='nameInput'>
-                          <input placeholder='First name'/>
-                          <input placeholder='Last name'/>
+                          <input className='inputsName' placeholder='First name'/>
+                          <input className='inputsName'placeholder='Last name'/>
                         </div>
-                        <input placeholder='Mobile number ou email'/>
-                        <input placeholder='New password'/>
+                        <input className='inputs' placeholder='Mobile number ou email'/>
+                        <input className='inputs' placeholder='New password'/>
                       </div>
                       
                       <div className='birthdayLabel'>
@@ -165,21 +160,21 @@ function Login() {
                           Birthday <FontAwesomeIcon icon={faQuestionCircle}/>                          
                         </label>
                         <div className='date_dropDown'>                                           
-                          <select value={selectedMonth} onChange={handleMonthChange}>
+                          <select className='bgOption' value={selectedMonth} onChange={handleMonthChange}>
                             <option value="">Month</option>
                             {months.map((month, index) => (
                               <option key={month} value={index + 1}>{month}</option>
                             ))}
                           </select>
 
-                          <select value={selectedDay} onChange={handleDayChange}>
+                          <select className='bgOption' value={selectedDay} onChange={handleDayChange}>
                             <option value="">Day</option>
                             {days.map(day => (
                             <option key={day} value={day}>{day}</option>
                             ))}
                           </select>
                           
-                          <select value={selectedYear} onChange={handleYearChange}>
+                          <select className='bgOption' value={selectedYear} onChange={handleYearChange}>
                             <option value="">Year</option>
                             {years.map(year => (
                               <option key={year} value={year}>{year}</option>
@@ -193,41 +188,54 @@ function Login() {
                       </div>
                       
                       <div className='genderLabel'>
-                        <label >Gender <FontAwesomeIcon icon={faQuestionCircle}/>
-                            <input className='caseBox'
-                              type="checkbox"
-                              value="male"
-                              checked={selectedGender.includes('male')}
-                              onChange={handleGenderChange}
-                            />
-                            Male 
+                        <label >Gender <FontAwesomeIcon icon={faQuestionCircle}/></label>
+                        <div className='gender_dropDown'>
+                            <label className='bordered-option'>
+                              <input
+                                className='caseBox'
+                                type="radio"
+                                value="male"
+                                checked={gender === 'male'}
+                                onChange={handleGenderChange}
+                              />
+                              Male
+                            </label>
 
-                            <input className='caseBox'
-                              type="checkbox"
-                              value="female"
-                              checked={selectedGender.includes('female')}
-                              onChange={handleGenderChange}
-                            />
-                            Female
-                                                    
-                            <input className='caseBox'
-                              type="checkbox"
-                              value="other"
-                              checked={selectedGender.includes('other')}
-                              onChange={handleGenderChange}
-                            />
-                            Other                      
-                        </label>
-                      </div>
+                            <label className='bordered-option'>
+                              <input
+                                className='caseBox'
+                                type="radio"
+                                value="female"
+                                checked={gender === 'female'}
+                                onChange={handleGenderChange}
+                              />
+                              Female
+                            </label>
+
+                            <label className='bordered-option'>                      
+                              <input className='caseBox'
+                                type="radio"
+                                value="other"
+                                checked={gender === 'other'}
+                                onChange={handleGenderChange}
+                              />
+                              Other
+                            </label>
+                          </div>
+                        </div>
 
                       <div className='info'>
                         <p>
                         People who use our service may have uploaded your contact information to Facebook. <a href="#">Learn more.</a>                          
                         </p>
+                          <br/>
                         <p>
                         By clicking Sign Up, you agree to our <a>Terms, Privacy Policy</a> and <a>Cookies Policy</a>. You may receive SMS Notifications from us and can opt out any time.
                         </p>
                       </div>
+                      <button className='signupButton'>
+                        Sign Up
+                      </button>
                     </div>
                   }
                 </div>

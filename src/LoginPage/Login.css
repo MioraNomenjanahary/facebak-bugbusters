@@ -184,22 +184,22 @@ hr{
 
     border: none;
 }
-
-.sign{
+ 
+.signupButton
+    {
     padding-inline: 1rem;
     height: 2.7rem;
 
     background-color: #36a420;
     border: #36a420;
     border-radius: 0.3rem;
-    
 
     color: #fff;
     font-weight: 900;
     font-size: 16px;
 }
 
-.sign:hover{
+.signupButton:hover{
     scale: 1.05;
     transition-duration: 0.2s;
 }
@@ -289,6 +289,14 @@ h1{
     gap: 0.5rem;
 }
 
+.inputs{
+    width: 21.5rem;
+}
+
+.inputsName{
+    width: 9.5rem;
+}
+
 .nameInput{
     display: inline-flex;
     justify-content: center;
@@ -296,15 +304,27 @@ h1{
 
     gap: 1rem;
 
-    width: 5px;
-    padding: 0;
-    margin: 0;
 }
 .birthdayLabel,
 .genderLabel
 {
     display: flex;
     flex-direction: column;
+}
+
+.bgOption{
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    padding-inline: 20px;
+    margin-right: 10px;
+
+    font-size: 14px;
+    color: rgb(157, 154, 154);
+
+    height: 2.5rem;
+
 }
 
 label{
@@ -317,8 +337,10 @@ label{
     margin-right: 155px;
 
     color: rgb(157, 154, 154);
-}
+    margin-block: 0.3rem;
 
+    font-size: 12px;
+}
 
 .case{
     width: 15px;
@@ -326,7 +348,24 @@ label{
 
 .caseBox{
     width: 13px;
+
+    padding: 0;
+    margin: 0;
 }
+
+.bordered-option {
+    display: flex;
+    flex-direction: row-reverse;
+
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    
+    padding-inline: 1rem;
+    margin-right: 10px;
+
+    font-size: 14px;
+  }
+  
 
 .window_loginButton{
     background-color: #1877f2;
@@ -345,4 +384,27 @@ label{
 .window_loginButton:hover{
     scale: 1.03;
     transition-duration: 0.3s;
+}
+
+.gender_dropDown,
+.date_dropDown{
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;    
+
+    gap: 1rem;
+}
+
+.info p{
+    text-align: justify;
+    padding-inline: 5%;
+}
+
+.signupText{
+    text-align: justify;
+    padding-right: 9.6rem;
+}
+
+.signupText p{
+    color: rgb(157, 154, 154);
 }
