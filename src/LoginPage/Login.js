@@ -82,6 +82,7 @@ function Login() {
             <div className='input'>
               <input placeholder='Email or Phone Number'/>
               <input placeholder='Password'/>
+            </div>
             <button className='login_button'>
               Log in
             </button>
@@ -94,7 +95,6 @@ function Login() {
                 Create new account
               </button>
             </Link>
-          </div>
         </div>
           <p> <span>Create a Page</span>, for a celebrity, brand or business.</p>
         </div>
